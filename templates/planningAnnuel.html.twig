@@ -1,13 +1,32 @@
 
-<h1>{{ title }}</h1>
-<h2>{{ title2 }}</h2>
+<h1>Planning Annuel de {{ user }}</h1>
+<h2>Année courante : {{ year }}</h2>
 
-<div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+{# Style #}
+<style>
+    table, th, td {
+        border:1px solid black;
+        width: 20px;
+    }
+</style>
 
-    <p>Vivamus accumsan ultricies elit, id luctus purus.</p>
+{# Draw schedule #}
+<table style="width:100%">
 
-    <p>Nulla facilisi. Nam vel tortor id orci mollis interdum.</p>
+    <tr>
+        {% for column in columns_header %}
+            <th>{{ column }}</th>
+        {% endfor %}
+    </tr>
 
-    <p>Praesent a efficitur turpis. Sed in vehicula arcu, pretium blandit nisl.</p>
-</div>
+    {% for content_column in schedule_content %}
+        <tr>
+            {# <td>{{ line }}</td> #}
+            {% for line in content_column  %}
+                <td>{{ line }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+

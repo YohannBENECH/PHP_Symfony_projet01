@@ -3,7 +3,7 @@ index:
     controller: App\Controller\DefaultController::index
 
 planningAnnuel:
-    path: /planningAnnuel/{var}
+    path: /planningAnnuel/{user}
     controller: App\Controller\DefaultController::planningAnnuel
 
 
