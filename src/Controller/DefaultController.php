@@ -78,17 +78,12 @@ class DefaultController extends AbstractController
 
         $schedule_content = array();
 
-
-
         for($i=1; $i<=31; $i++)
         {
             array_push($schedule_content,
                 array($i, " "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ")
             );
         }
-
-
-        // DAYS COLUMN
 
 
         return $this->render(PAGE_PLANNING_ANNUEL,
