@@ -1,7 +1,19 @@
 <?php
+// Reminder ------------------------------------------------------------------------------
 // Start the server
 // php -S 127.0.0.1:8000 -t public
 
+// Create an Entity | result in "src/Entity/"
+// To edit an entity use it too, it will detect if it already exists !
+// php bin\console make:entity
+
+// Migrate resulting modifications (Entities) to a php file | result in "migrations/Version20211113234302.php"
+// php bin\console make:migration
+
+// Update Database with previously migrated data
+// php bin\console doctrine:migrations:migrate
+
+// ---------------------------------------------------------------------------------------
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
