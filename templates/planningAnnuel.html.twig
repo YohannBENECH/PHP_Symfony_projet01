@@ -24,11 +24,11 @@
     </thead>
 
     <tbody>
-        {% for content_column in schedule_content %}
+        {% for row in schedule_content %}
             <tr>
                 {# <td>{{ line }}</td> #}
-                {% for line in content_column  %}
-                    <td>{{ line }}</td>
+                {% for cell in row  %}
+                    <td>{{ cell }}</td>
                 {% endfor %}
             </tr>
         {% endfor %}
