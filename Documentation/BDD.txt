@@ -1,0 +1,42 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+
+
+Table account {
+  id int [pk, increment]
+  
+}
+
+Table administration {
+  id int [pk, increment]
+}
+
+Table intervenant {
+  id int [pk, increment] // auto-increment
+  first_name varchar
+  name varchar
+  
+}
+
+Table matiere {
+  id int [pk, increment]
+  name varchar
+  specialite boolean
+  day_to_exclude list
+}
+
+Table cours {
+  id int [pk, increment]
+  _datetime datetime
+  
+}
+
+Table affectation_matiere {
+  id int [pk, increment]
+  intervenant_id int
+  //section_id int
+  matiere_id int
+  duree int 
+}
