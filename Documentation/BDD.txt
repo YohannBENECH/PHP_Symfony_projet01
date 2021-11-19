@@ -3,34 +3,25 @@
 
 // Creating tables
 
-
 Table account {
-  id int [pk, increment]
-  
-}
-
-Table administration {
-  id int [pk, increment]
-}
-
-Table intervenant {
   id int [pk, increment] // auto-increment
+  login varchar
+  password varchar //Don't forget to hash it
+  type enum('administration', 'intervenant')
   first_name varchar
   name varchar
-  
 }
 
 Table matiere {
   id int [pk, increment]
   name varchar
   specialite boolean
-  day_to_exclude list
 }
 
 Table cours {
   id int [pk, increment]
+  matiere_id int 
   _datetime datetime
-  
 }
 
 Table affectation_matiere {
@@ -38,5 +29,15 @@ Table affectation_matiere {
   intervenant_id int
   //section_id int
   matiere_id int
-  duree int 
+  duree int
+  intervalle_debut date
+  intervalle_fin date 
+}
+
+Table to_exclude{
+  id int [pk, increment]
+  intervenant_id int
+  matiere_id int //toutes les matieres = 0
+  intervalle_debut date
+  intervalle_fin date 
 }
