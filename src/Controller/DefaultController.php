@@ -16,15 +16,27 @@ class DefaultController extends AbstractController
         return $this->render(PAGE_AFFICHE, ['']);
     }
 
-    /*
-     * @Route ("/produits/{var}")
-     */
-    function afficheCreneau($var): Response
+    function afficheSemaine(): Response
     {
-        // return new Response(sprintf("Test : %s", $var));
 
-        return $this->render(PAGE_AFFICHE,
-            ['title'=> ucwords(str_replace('-', ' ', $var)),
+        $header = array(
+            "Lundi","Mardi","Mercredi", "Jeudi","Vendredi", "Samedi", "Dimanche"
+        ); // En solide
+
+        $schedule_content = array();
+
+        //En mouvement
+
+        $row = array(
+            "mardi septembre 2017", "Accueil CMI", "4", "Sophie",
+            "ANGLAIS", "3", "Daniel"
+        );
+
+        array_push($schedule_content, $row);
+
+        return $this->render('semaine/affiche.html.twig',[
+            'header' => $header,
+            'schedule_content' => $schedule_content
         ]);
     }
 }

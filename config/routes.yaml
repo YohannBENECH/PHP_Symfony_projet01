@@ -6,6 +6,10 @@ afficheCreneau:
     path: /twigtest/{var}
     controller: App\Controller\DefaultController::afficheCreneau
 
+afficheSemaine:
+    path: /planningSemaine
+    controller: App\Controller\DefaultController::afficheSemaine
+
 
 
 
