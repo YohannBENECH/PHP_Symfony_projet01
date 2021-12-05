@@ -1,4 +1,5 @@
 <?php
+
 // Reminder ------------------------------------------------------------------------------
 // Start the server
 // php -S 127.0.0.1:8000 -t public
@@ -17,38 +18,20 @@
 // php bin\console doctrine:migrations:migrate
 
 // ---------------------------------------------------------------------------------------
+
 namespace App\Controller;
 
-use App\Entity\Intervenant;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// ---------------------------------------------------------------------------------------
-
-define('DEFAULT_PAGE', 'base.html.twig');
-
-// ---------------------------------------------------------------------------------------
-class DefaultController extends AbstractController
+class LoginPageManagerController extends AbstractController
 {
-
-    function index(): Response
+    #[Route('/login/page/manager', name: 'login_page_manager')]
+    public function index(): Response
     {
-        return new Response("TEST PAGE");
-        //return $this->render(DEFAULT_PAGE, ['']);
+        return $this->render('login_page_manager/index.html.twig', [
+            'controller_name' => 'LoginPageManagerController',
+        ]);
     }
-
-    function bissextile($year) {
-        if( (is_int($year/4) && !is_int($year/100)) || is_int($year/400)) {
-            // Année bissextile
-            // vous remplacez le retour par ce que vou voulez
-            return TRUE;
-        } else {
-            // Année NON bissextile
-            // vous remplacez le retour par ce que vou voulez
-            return FALSE;
-        }
-    }
-
-
 }

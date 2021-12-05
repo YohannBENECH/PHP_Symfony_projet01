@@ -1,13 +1,14 @@
-index:
-    path: /
-    controller: App\Controller\DefaultController::index
-
-planningAnnuel:
-    path: /planningAnnuel/{user}
-    controller: App\Controller\DefaultController::planningAnnuel
-
-
-
+#
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+#
+#planningAnnuel:
+#    path: /planningAnnuel/{user}
+#    controller: App\Controller\DefaultController::planningAnnuel
+#
+#
+#
 
 
 
