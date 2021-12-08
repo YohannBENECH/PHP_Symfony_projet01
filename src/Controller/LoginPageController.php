@@ -25,13 +25,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginPageManagerController extends AbstractController
+class LoginPageController extends AbstractController
 {
-    #[Route('/login/page/manager', name: 'login_page_manager')]
+    #[Route('/login/page', name: 'login_page')]
     public function index(): Response
     {
         return $this->render('login_page_manager/index.html.twig', [
-            'controller_name' => 'LoginPageManagerController',
+            'controller_name' => 'LoginPageController',
         ]);
     }
 }

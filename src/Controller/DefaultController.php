@@ -1,4 +1,5 @@
 <?php
+
 // Reminder ------------------------------------------------------------------------------
 // Start the server
 // php -S 127.0.0.1:8000 -t public
@@ -38,6 +39,7 @@ class DefaultController extends AbstractController
         //return $this->render(DEFAULT_PAGE, ['']);
     }
 
+    // Return True if it is
     function bissextile($year) {
         if( (is_int($year/4) && !is_int($year/100)) || is_int($year/400)) {
             // Année bissextile
