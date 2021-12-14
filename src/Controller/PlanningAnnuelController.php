@@ -21,9 +21,11 @@
 
 namespace App\Controller;
 
+use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 // ---------------------------------------------------------------------------------------
 
@@ -33,65 +35,31 @@ define('PAGE_PLANNING_ANNUEL', 'planningAnnuel.html.twig');
 class PlanningAnnuelController extends AbstractController
 {
     #[Route('/planningAnnuel/{user}')]
-    function planningAnnuel($user): Response
+    function planningAnnuel($user, CoursRepository $cours): Response
     {
         $year = date("Y");
-        $columns_header = [
-            "N° Jour",
-            "   ",
-            "Janvier",
-            "   ",
-            "   ",
-            "Fevrier",
-            "   ",
-            "   ",
-            "Mars",
-            "   ",
-            "   ",
-            "Avril",
-            "   ",
-            "   ",
-            "Mai",
-            "   ",
-            "   ",
-            "Juin",
-            "   ",
-            "   ",
-            "Juillet",
-            "   ",
-            "   ",
-            "Aout",
-            "   ",
-            "   ",
-            "Septembre",
-            "   ",
-            "   ",
-            "Octobre",
-            "   ",
-            "   ",
-            "Novembre",
-            "   ",
-            "   ",
-            "Decembre",
-            "   "
-        ];
+        $events = $cours->findAll();
+        // dd($events); // Test
 
-        $schedule_content = array();
-
-        for($i=1; $i<=31; $i++)
-        {
-            array_push($schedule_content,
-                array($i, " "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ")
-            );
+        foreach ($events as $curseur_event){
+            $rdvs[] = [
+                'id' => $curseur_event->getId(),
+                'cours_id' => $curseur_event->getCoursId(),
+                'matiere_id' => $curseur_event->getMatiereId(),
+                'cours_duree' => $curseur_event->getCoursDuree(),
+                'background_color' => $curseur_event->getBackgroundColor(),
+                'text_color' => $curseur_event->getTextColor(),
+                'description' => $curseur_event->getDescription(),
+                'start' => $curseur_event->getStart()->format('Y-m-d H:i:s')
+            ];
         }
 
-
+        $data = json_encode($rdvs);
         return $this->render(PAGE_PLANNING_ANNUEL,
+            compact($data),
             [
                 'year' => $year,
-                'user' => ucwords(str_replace('-', ' ', $user)),
-                'columns_header' => $columns_header,
-                'schedule_content' => $schedule_content
+                'user' => ucwords(str_replace('-', ' ', $user))
             ]);
     }
 }

@@ -32,24 +32,11 @@ define('DEFAULT_PAGE', 'base.html.twig');
 // ---------------------------------------------------------------------------------------
 class DefaultController extends AbstractController
 {
-
+    #[Route('/TEST')]
     function index(): Response
     {
         return new Response("TEST PAGE");
         //return $this->render(DEFAULT_PAGE, ['']);
-    }
-
-    // Return True if it is
-    function bissextile($year) {
-        if( (is_int($year/4) && !is_int($year/100)) || is_int($year/400)) {
-            // Année bissextile
-            // vous remplacez le retour par ce que vou voulez
-            return TRUE;
-        } else {
-            // Année NON bissextile
-            // vous remplacez le retour par ce que vou voulez
-            return FALSE;
-        }
     }
 
 
