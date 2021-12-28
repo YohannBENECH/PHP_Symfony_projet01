@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Nouvelle Horaire{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -23,5 +23,18 @@
         </ul>
 
     </div>
-    <h1>Accueil</h1>
+    <h1>Creer un nouveau compte</h1>
+    <style>
+        .exemple-wrapper{
+            margin: 1em auto; max-width:  800px; width: 95px; font: 18px/1.5 sans serif; }
+        .exemple-wrapper code { background : #F5F5F5; padding: 2px 6px;
+        }
+    </style>
+
+    <div>
+        {{ form(form) }}
+        {# {{ form_start(compteForm)}}
+            {{ form_widget(compteForm) }}
+        {{ form_end(compteForm) }}#}
+    </div>
 {% endblock %}

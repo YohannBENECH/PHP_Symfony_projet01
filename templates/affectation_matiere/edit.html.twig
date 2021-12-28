@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AffectationMatiere{% endblock %}
+
+{% block body %}
+    <h1>Edit AffectationMatiere</h1>
+
+    {{ include('affectation_matiere/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('affectation_matiere_index') }}">back to list</a>
+
+    {{ include('affectation_matiere/_delete_form.html.twig') }}
+{% endblock %}

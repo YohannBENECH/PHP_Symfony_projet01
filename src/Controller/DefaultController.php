@@ -19,24 +19,6 @@ class DefaultController extends AbstractController
     function afficheSemaine(): Response
     {
 
-        $header = array(
-            "Lundi","Mardi","Mercredi", "Jeudi","Vendredi", "Samedi", "Dimanche"
-        ); // En solide
-
-        $schedule_content = array();
-
-        //En mouvement
-
-        $row = array(
-            "mardi septembre 2017", "Accueil CMI", "4", "Sophie",
-            "ANGLAIS", "3", "Daniel"
-        );
-
-        array_push($schedule_content, $row);
-
-        return $this->render('semaine/affiche.html.twig',[
-            'header' => $header,
-            'schedule_content' => $schedule_content
-        ]);
+        return $this->render('semaine/affiche.html.twig');
     }
 }

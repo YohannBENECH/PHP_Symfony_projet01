@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AffectationMatiere index{% endblock %}
+
+{% block body %}
+    <h1>AffectationMatiere index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Intervenant_id</th>
+                <th>Matiere_id</th>
+                <th>Duree</th>
+                <th>Intervalle_debut</th>
+                <th>Intervalle_fin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affectation_matiere in affectation_matieres %}
+            <tr>
+                <td>{{ affectation_matiere.id }}</td>
+                <td>{{ affectation_matiere.intervenantId }}</td>
+                <td>{{ affectation_matiere.matiereId }}</td>
+                <td>{{ affectation_matiere.duree }}</td>
+                <td>{{ affectation_matiere.intervalleDebut ? affectation_matiere.intervalleDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ affectation_matiere.intervalleFin ? affectation_matiere.intervalleFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('affectation_matiere_show', {'id': affectation_matiere.id}) }}">show</a>
+                    <a href="{{ path('affectation_matiere_edit', {'id': affectation_matiere.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('affectation_matiere_new') }}">Create new</a>
+{% endblock %}
