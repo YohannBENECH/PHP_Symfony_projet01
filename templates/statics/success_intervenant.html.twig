@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle Horaire{% endblock %}
+{% block title %}Compte créer!{% endblock %}
 
 {% block body %}
+    <style>
+        .exemple-wrapper{
+            margin: 1em auto; max-width:  800px; width: 95px; font: 18px/1.5 sans serif; }
+        .exemple-wrapper code { background : #F5F5F5; padding: 2px 6px;
+        }
+    </style>
     <div class="container">
-
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="/">Accueil</a>
@@ -24,7 +29,8 @@
         </ul>
 
     </div>
-    {{ include('affectation_matiere/_form.html.twig') }}
-
-    <a class="btn btn-dark" href="{{ path('affectation_matiere_index') }}">Voir la liste des cours</a>
+    <div class="example-wrapper">
+        <h1>La saisie a bien été enregistrée !</h1>
+        <a href="/compte/create">Ajout d'un nouveau intervenant</a>
+    </div>
 {% endblock %}

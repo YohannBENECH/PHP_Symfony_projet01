@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AffectationMatiere index{% endblock %}
+{% block title %}Liste des cours{% endblock %}
 
 {% block body %}
-    <h1>AffectationMatiere index</h1>
+    <h1>Cours</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Intervenant_id</th>
-                <th>Matiere_id</th>
+                <th>Numéro</th>
+                <th>Intervenant</th>
+                <th>Matiere</th>
                 <th>Duree</th>
-                <th>Intervalle_debut</th>
-                <th>Intervalle_fin</th>
-                <th>actions</th>
+                <th>Debut du cours</th>
+                <th>Fin du cours</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,11 +33,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun cours trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('affectation_matiere_new') }}">Create new</a>
+    <a href="{{ path('affectation_matiere_new') }}">Creer un nouvelle horaire</a>
 {% endblock %}
