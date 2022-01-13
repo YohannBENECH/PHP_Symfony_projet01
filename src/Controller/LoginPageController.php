@@ -17,6 +17,12 @@
 // Update Database with previously migrated data
 // php bin\console doctrine:migrations:migrate
 
+// Create CRUD on Entity (You ll have to precise the name)
+// symfony console make:crud
+
+// Update Database (force)
+// php bin/console d:s:u --force
+
 // ---------------------------------------------------------------------------------------
 
 namespace App\Controller;

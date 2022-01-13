@@ -20,17 +20,7 @@ class Cours
     /**
      * @ORM\Column(type="integer")
      */
-    private $cours_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $matiere_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cours_duree;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,6 +48,11 @@ class Cours
     private $start;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $_end;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $intervenant_id;
@@ -65,18 +60,6 @@ class Cours
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCoursId(): ?int
-    {
-        return $this->cours_id;
-    }
-
-    public function setCoursId(int $cours_id): self
-    {
-        $this->cours_id = $cours_id;
-
-        return $this;
     }
 
     public function getMatiereId(): ?int
@@ -87,18 +70,6 @@ class Cours
     public function setMatiereId(int $matiere_id): self
     {
         $this->matiere_id = $matiere_id;
-
-        return $this;
-    }
-
-    public function getCoursDuree(): ?int
-    {
-        return $this->cours_duree;
-    }
-
-    public function setCoursDuree(int $cours_duree): self
-    {
-        $this->cours_duree = $cours_duree;
 
         return $this;
     }
@@ -159,6 +130,19 @@ class Cours
     public function setStart(\DateTimeInterface $start): self
     {
         $this->start = $start;
+
+        return $this;
+    }
+
+
+    public function getEnd(): ?\DateTimeInterface
+    {
+        return $this->_end;
+    }
+
+    public function setEnd(\DateTimeInterface $_end): self
+    {
+        $this->_end = $_end;
 
         return $this;
     }

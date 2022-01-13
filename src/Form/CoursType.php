@@ -14,12 +14,14 @@ class CoursType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('cours_id')
             ->add('matiere_id')
+            ->add('intervenant_id')
             ->add('start', DateTimeType::class, [
                 'date_widget' => 'single_text'
             ])
-            ->add('cours_duree')
+            ->add('_end', DateTimeType::class, [
+                'date_widget' => 'single_text'
+            ])
             ->add('description')
             ->add('background_color', ColorType::class)
             ->add('text_color', ColorType::class)

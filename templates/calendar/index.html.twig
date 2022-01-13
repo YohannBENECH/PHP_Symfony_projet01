@@ -9,12 +9,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Cours_id</th>
                 <th>Matiere_id</th>
-                <th>Cours_duree</th>
+                <th>Intervenant_id</th>
                 <th>Background_color</th>
                 <th>Text_color</th>
                 <th>Border_color</th>
+                <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,12 +22,12 @@
         {% for cour in cours %}
             <tr>
                 <td>{{ cour.id }}</td>
-                <td>{{ cour.coursId }}</td>
                 <td>{{ cour.matiereId }}</td>
-                <td>{{ cour.coursDuree }}</td>
+                <td>{{ cour.intervenantId }}</td>
                 <td>{{ cour.backgroundColor }}</td>
                 <td>{{ cour.textColor }}</td>
                 <td>{{ cour.borderColor }}</td>
+                <td>{{ cour.description }}</td>
                 <td>
                     <a href="{{ path('calendar_show', {'id': cour.id}) }}">show</a>
                     <a href="{{ path('calendar_edit', {'id': cour.id}) }}">edit</a>

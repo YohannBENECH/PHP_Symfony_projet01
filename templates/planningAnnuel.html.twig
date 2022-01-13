@@ -1,5 +1,5 @@
 
-<h1>Planning Annuel de {{ user }}</h1>
+{#<h1>Planning Annuel de {{ user }}</h1>#}
 
 {# Style #}
 <style>
@@ -23,6 +23,7 @@
 </head>
 
 {% block body %}
+    {{ dump(data | raw) }}
     <div id="calendrier">
     </div>
 {% endblock %}
@@ -40,7 +41,8 @@
                     start: 'prev,next today',
                     center: 'title',
                     end: 'dayGridMonth,timeGridWeek'
-                }
+                },
+                events: {{ data | raw }}
             })
 
             calendar.render()

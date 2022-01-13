@@ -17,6 +17,12 @@
 // Update Database with previously migrated data
 // php bin\console doctrine:migrations:migrate
 
+// Create CRUD on Entity (You ll have to precise the name)
+// symfony console make:crud
+
+// Update Database (force)
+// php bin/console d:s:u --force
+
 // ---------------------------------------------------------------------------------------
 
 namespace App\Controller;
@@ -44,22 +50,26 @@ class PlanningAnnuelController extends AbstractController
         foreach ($events as $curseur_event){
             $rdvs[] = [
                 'id' => $curseur_event->getId(),
-                'cours_id' => $curseur_event->getCoursId(),
                 'matiere_id' => $curseur_event->getMatiereId(),
-                'cours_duree' => $curseur_event->getCoursDuree(),
+                'intervenant_id' => $curseur_event->getIntervenantId(),
                 'background_color' => $curseur_event->getBackgroundColor(),
                 'text_color' => $curseur_event->getTextColor(),
-                'description' => $curseur_event->getDescription(),
-                'start' => $curseur_event->getStart()->format('Y-m-d H:i:s')
+                'title' => $curseur_event->getDescription(),
+                'start' => $curseur_event->getStart()->format('Y-m-d H:i:s'),
+                'end' => $curseur_event->getEnd()->format('Y-m-d H:i:s')
             ];
         }
 
         $data = json_encode($rdvs);
+
+        //dd(compact('data'));
+
         return $this->render(PAGE_PLANNING_ANNUEL,
-            compact($data),
-            [
+            compact('data')
+            /*[
+                'data' => compact('data'),
                 'year' => $year,
                 'user' => ucwords(str_replace('-', ' ', $user))
-            ]);
+            ]*/);
     }
 }
