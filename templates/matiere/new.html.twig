@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Horaire{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Calendrier Annuelle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/planningSemaine">Calendrier Semaine</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/compte/create">Inscrire un compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Login</a>
+            </li>
+        </ul>
+
+    </div>
+    <h1>Creer une nouvelle matiere</h1>
+    <style>
+        .exemple-wrapper{
+            margin: 1em auto; max-width:  800px; width: 95px; font: 18px/1.5 sans serif; }
+        .exemple-wrapper code { background : #F5F5F5; padding: 2px 6px;
+        }
+    </style>
+
+    <div>
+        {{ form(form) }}
+        {# {{ form_start(compteForm)}}
+            {{ form_widget(compteForm) }}
+        {{ form_end(compteForm) }}#}
+    </div>
+{% endblock %}
