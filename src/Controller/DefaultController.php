@@ -23,6 +23,8 @@
 // Update Database (force)
 // php bin/console d:s:u --force
 
+// Create a Cours path : http://localhost:8000/calendar/new
+
 // ---------------------------------------------------------------------------------------
 namespace App\Controller;
 
