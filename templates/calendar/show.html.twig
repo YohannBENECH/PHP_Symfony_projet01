@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Cours</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cour.id }}</td>
+            </tr>
+            <tr>
+                <th>Cours_id</th>
+                <td>{{ cour.coursId }}</td>
+            </tr>
+            <tr>
+                <th>Matiere_id</th>
+                <td>{{ cour.matiereId }}</td>
+            </tr>
+            <tr>
+                <th>Cours_duree</th>
+                <td>{{ cour.coursDuree }}</td>
+            </tr>
+            <tr>
+                <th>Background_color</th>
+                <td>{{ cour.backgroundColor }}</td>
+            </tr>
+            <tr>
+                <th>Text_color</th>
+                <td>{{ cour.textColor }}</td>
+            </tr>
+            <tr>
+                <th>Border_color</th>
+                <td>{{ cour.borderColor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('calendar_index') }}">back to list</a>
+
+    <a href="{{ path('calendar_edit', {'id': cour.id}) }}">edit</a>
+
+    {{ include('calendar/_delete_form.html.twig') }}
+{% endblock %}
