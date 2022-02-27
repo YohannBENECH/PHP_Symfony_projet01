@@ -1,0 +1,17 @@
+
+{% block title %} Hello !{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1>Login Page</h1>
+
+        <form action="{{ path('/login') }}" method="POST">
+            <input type="text" name="_username" value="{{ last_sername }}" placeholder="Username here...">
+            <input type="password" name="_password">
+
+            <button type="submit">Login</button>>
+        </form>
+    </div>
+
+{% endblock %}

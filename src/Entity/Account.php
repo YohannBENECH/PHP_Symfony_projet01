@@ -23,7 +23,7 @@ class Account
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
     private $username;
 
@@ -59,7 +59,7 @@ class Account
     private $account_name;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
     private $email;
 

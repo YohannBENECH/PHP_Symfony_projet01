@@ -31,11 +31,14 @@ namespace App\Controller;
 use App\Entity\Intervenant;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 // ---------------------------------------------------------------------------------------
 
 define('DEFAULT_PAGE', 'base.html.twig');
+define('LOGIN_PAGE',   'registration/login.html.twig');
 
 // ---------------------------------------------------------------------------------------
 class DefaultController extends AbstractController
@@ -47,5 +50,17 @@ class DefaultController extends AbstractController
         //return $this->render(DEFAULT_PAGE, ['']);
     }
 
+    #[Route('/login')]
+    public function login(Request $request, AuthenticationUtils $utils)
+    {
+        $error = $utils->getLastAuthenticationError();
+
+        $lastUsername = $utils->getLastUsername();
+
+        return $this->render(LOGIN_PAGE, [
+            'error' => $error,
+            'last_username' => $lastUsername
+        ]);
+    }
 
 }
