@@ -54,6 +54,7 @@ class PlanningAnnuelController extends AbstractController
                 'intervenant_id' => $curseur_event->getIntervenantId(),
                 'background_color' => $curseur_event->getBackgroundColor(),
                 'text_color' => $curseur_event->getTextColor(),
+                'border_color' => $curseur_event->getBorderColor(),
                 'title' => $curseur_event->getDescription(),
                 'start' => $curseur_event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $curseur_event->getEnd()->format('Y-m-d H:i:s')
