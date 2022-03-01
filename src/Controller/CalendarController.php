@@ -21,7 +21,7 @@ class CalendarController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'calendar_new', methods: ['GET','POST'])]
+    #[Route('/new', name: 'calendar_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $cour = new Cours();
@@ -50,7 +50,7 @@ class CalendarController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'calendar_edit', methods: ['GET','POST'])]
+    #[Route('/{id}/edit', name: 'calendar_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Cours $cour): Response
     {
         $form = $this->createForm(CoursType::class, $cour);
@@ -71,7 +71,7 @@ class CalendarController extends AbstractController
     #[Route('/{id}', name: 'calendar_delete', methods: ['POST'])]
     public function delete(Request $request, Cours $cour): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cour->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cour->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($cour);
             $entityManager->flush();
@@ -79,4 +79,5 @@ class CalendarController extends AbstractController
 
         return $this->redirectToRoute('calendar_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

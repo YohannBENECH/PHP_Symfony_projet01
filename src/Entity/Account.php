@@ -4,12 +4,8 @@ namespace App\Entity;
 
 use App\Repository\AccountRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="account")
  * @ORM\Entity(repositoryClass=AccountRepository::class)
  */
 class Account
@@ -18,30 +14,18 @@ class Account
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $account_id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=25)
      */
-    private $username;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
+    private $account_login;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $password;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $roles;
+    private $account_password;
 
     /**
      * @ORM\Column(type="string", length=20)
@@ -49,217 +33,77 @@ class Account
     private $account_type;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $account_firstname;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $account_name;
 
-    /**
-     * @ORM\Column(type="string", length=25, unique=true)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=25)
-     */
-    private $isActive;
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getAccountId(): ?int
     {
-        return $this->id;
+        return $this->account_id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
+    public function getAccountLogin(): ?string
     {
-        $this->id = $id;
+        return $this->account_login;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUsername()
+    public function setAccountLogin(string $account_login): self
     {
-        return $this->username;
+        $this->account_login = $account_login;
+
+        return $this;
     }
 
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
+    public function getAccountPassword(): ?string
     {
-        $this->username = $username;
+        return $this->account_password;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
+    public function setAccountPassword(string $account_password): self
     {
-        return $this->plainPassword;
+        $this->account_password = $account_password;
+
+        return $this;
     }
 
-    /**
-     * @param mixed $plainPassword
-     */
-    public function setPlainPassword($plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAccountType()
+    public function getAccountType(): ?string
     {
         return $this->account_type;
     }
 
-    /**
-     * @param mixed $account_type
-     */
-    public function setAccountType($account_type): void
+    public function setAccountType(string $account_type): self
     {
         $this->account_type = $account_type;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAccountFirstname()
+    public function getAccountFirstname(): ?string
     {
         return $this->account_firstname;
     }
 
-    /**
-     * @param mixed $account_firstname
-     */
-    public function setAccountFirstname($account_firstname): void
+    public function setAccountFirstname(?string $account_firstname): self
     {
         $this->account_firstname = $account_firstname;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAccountName()
+    public function getAccountName(): ?string
     {
         return $this->account_name;
     }
 
-    /**
-     * @param mixed $account_name
-     */
-    public function setAccountName($account_name): void
+    public function setAccountName(?string $account_name): self
     {
         $this->account_name = $account_name;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param bool $isActive
-     */
-    public function setIsActive(bool $isActive): void
-    {
-        $this->isActive = $isActive;
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
-    }
-
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
-
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized, array('allowed_classes' => false));
+        return $this;
     }
 }

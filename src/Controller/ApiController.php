@@ -30,9 +30,9 @@ class ApiController extends AbstractController
             isset($donnees->title) && !empty($donnees->title) &&
             isset($donnees->start) && !empty($donnees->start) &&
             isset($donnees->end) && !empty($donnees->end) &&
-            isset($donnees->background_color) && !empty($donnees->background_color) &&
-            isset($donnees->border_color) && !empty($donnees->border_color) &&
-            isset($donnees->text_color) && !empty($donnees->text_color)
+            isset($donnees->backgroundColor) && !empty($donnees->backgroundColor) &&
+            isset($donnees->borderColor) && !empty($donnees->borderColor) &&
+            isset($donnees->textColor) && !empty($donnees->textColor)
         ) {
             //Les donnees sont completes
             $code = 200;
@@ -47,9 +47,9 @@ class ApiController extends AbstractController
             $calendar->setDescription($donnees->title);
             $calendar->setStart(new \DateTime($donnees->start));
             $calendar->setEnd(new \DateTime ($donnees->end));
-            $calendar->setBackgroundColor($donnees->background_color);
-            $calendar->setBorderColor($donnees->border_color);
-            $calendar->setTextColor($donnees->text_color);
+            $calendar->setBackgroundColor($donnees->backgroundColor);
+            $calendar->setBorderColor($donnees->borderColor);
+            $calendar->setTextColor($donnees->textColor);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($calendar);

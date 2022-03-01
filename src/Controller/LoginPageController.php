@@ -24,26 +24,20 @@
 // php bin/console d:s:u --force
 
 // ---------------------------------------------------------------------------------------
+
 namespace App\Controller;
 
-use App\Entity\Intervenant;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// ---------------------------------------------------------------------------------------
-
-define('DEFAULT_PAGE', 'base.html.twig');
-
-// ---------------------------------------------------------------------------------------
-class DefaultController extends AbstractController
+class LoginPageController extends AbstractController
 {
-    #[Route('/TEST')]
-    function index(): Response
+    #[Route('/login/page', name: 'login_page')]
+    public function index(): Response
     {
-        return new Response("TEST PAGE");
-        //return $this->render(DEFAULT_PAGE, ['']);
+        return $this->render('login_page_manager/index.html.twig', [
+            'controller_name' => 'LoginPageController',
+        ]);
     }
-
-
 }
