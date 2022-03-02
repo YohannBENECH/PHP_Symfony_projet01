@@ -44,6 +44,13 @@ class DefaultController extends AbstractController
         return new Response("TEST PAGE");
         //return $this->render(DEFAULT_PAGE, ['']);
     }
+    #[Route('/')]
+    function index_accueil(): Response
+    {
+        return $this->render('accueil/new.html.twig', [
+            'controller_name' => 'ApiController',
+        ]);
+    }
 
 
 }
