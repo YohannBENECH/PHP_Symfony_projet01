@@ -49,18 +49,4 @@ class DefaultController extends AbstractController
         return new Response("TEST PAGE");
         //return $this->render(DEFAULT_PAGE, ['']);
     }
-
-    #[Route('/login')]
-    public function login(Request $request, AuthenticationUtils $utils)
-    {
-        $error = $utils->getLastAuthenticationError();
-
-        $lastUsername = $utils->getLastUsername();
-
-        return $this->render(LOGIN_PAGE, [
-            'error' => $error,
-            'last_username' => $lastUsername
-        ]);
-    }
-
 }

@@ -1,5 +1,7 @@
 # config/packages/security.yaml
 security:
+    enable_authenticator_manager: true
+
     encoders:
         App\Entity\Account:
             algorithm: bcrypt
@@ -14,12 +16,15 @@ security:
             security: false
 
         main:
-            anonymous: true
+            custom_authenticators:
+                - App\SecurityController
 
             form_login:
                 login_path: login
                 check_path: login
                 provider: our_db_provider
+
+
 
     providers:
         our_db_provider:
